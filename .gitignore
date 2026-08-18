@@ -1,0 +1,19 @@
+# 模型权重（大文件，GitHub 请用 Git LFS 或放 HuggingFace）
+*.safetensors
+*.bin
+*.gguf
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 系统
+.DS_Store
+
+# 训练产物
+adapters/
+*.jsonl
