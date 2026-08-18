@@ -1,9 +1,9 @@
-# 模型权重（大文件，GitHub 请用 Git LFS 或放 HuggingFace）
-*.safetensors
-*.bin
-*.gguf
-*.pt
-*.pth
+# 训练数据（大，放 HF 即可）
+*.jsonl
+
+# 合并后的完整模型（大，放 HF / Git LFS）
+Qwen3-1.7B-4bit-mlx/
+LycheeAI-coder-1.7b/
 
 # Python
 __pycache__/
@@ -13,7 +13,3 @@ venv/
 
 # 系统
 .DS_Store
-
-# 训练产物
-adapters/
-*.jsonl
