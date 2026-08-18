@@ -23,7 +23,9 @@ datasets:
 
 **mlx-LycheeAI-coder-1.7b** 是一个基于 [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) 通过 **QLoRA（4-bit）微调**而来的编程助手模型，专注于提升编码能力，擅长编写清晰、正确、可维护的代码。
 
-> ⚠️ **格式说明**：本仓库提供的是 **MLX 格式**模型（`mlx` 前缀即表示此含义），仅支持在 **Apple Silicon Mac** 上通过 [MLX-LM](https://github.com/ml-explore/mlx-lm) 加载，**不兼容** HuggingFace transformers（PyTorch）、Windows/Linux、以及 Ollama（GGUF）。如需跨平台版本，请关注后续的 GGUF 版本。
+> ⚠️ **格式说明**：本仓库提供的是 **MLX 格式**模型（`mlx` 前缀即表示此含义），仅支持在 **Apple Silicon Mac** 上通过 [MLX-LM](https://github.com/ml-explore/mlx-lm) 加载，**不兼容** HuggingFace transformers（PyTorch）、Windows/Linux、以及 Ollama（GGUF）。如需跨平台（Ollama / llama.cpp / Windows / Linux）版本，请使用 **GGUF 版**：
+> - HuggingFace: [whcl412/LycheeAI-coder-1.7b-GGUF](https://huggingface.co/whcl412/LycheeAI-coder-1.7b-GGUF)
+> - ModelScope: [whcl412/LycheeAI-coder-1.7b-GGUF](https://modelscope.cn/models/whcl412/LycheeAI-coder-1.7b-GGUF)
 
 ## 模型信息
 
