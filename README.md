@@ -43,13 +43,16 @@ datasets:
 
 ## 训练细节
 
-- **训练数据**（共 5724 条，混合多语言）：
+- **第一轮（代码专项）**：
   - [CodeAlpaca-20k](https://huggingface.co/datasets/sahil2801/CodeAlpaca-20k)（代码指令 3500 条，重点）
   - 中文对话 800 条（[alpaca-zh](https://huggingface.co/datasets/shibing624/alpaca-zh)）
   - 英语对话 800 条（[Alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) 英文版）
   - 粤语对话 600 条（[yue-alpaca-chat](https://huggingface.co/datasets/hon9kon9ize/yue-alpaca-chat)）
   - 身份问答 24 条（中/英/粤，强化身份记忆）
-- **超参数**：学习率 1e-4，batch size 2，4000 步，LoRA rank 16
+  - 共 5724 条，学习率 1e-4，batch size 2，4000 步，LoRA rank 16
+- **第二轮（日常对话增量微调）**：
+  - 60 条日常对话（中文 32 / 英语 16 / 粤语 12），短问短答、口语化，让模型日常聊天时回复简短自然、不啰嗦
+  - 从第一轮权重续训（resume），学习率 5e-5，batch size 2，60 步
 - **身份设定**：通过 system prompt + 身份问答样本，固定模型身份为「LycheeAI-coder-1.7b，由 Qwen3-1.7B 微调而来」
 
 ## 使用方式
