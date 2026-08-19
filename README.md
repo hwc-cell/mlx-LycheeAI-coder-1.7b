@@ -2,6 +2,7 @@
 language:
 - zh
 - en
+- yue
 license: apache-2.0
 base_model: Qwen/Qwen3-1.7B
 base_model_relation: finetune
@@ -14,9 +15,12 @@ tags:
 - code
 - lychee
 - finetune
+- multilingual
 datasets:
 - sahil2801/CodeAlpaca-20k
-- github-code-corpus
+- shibing624/alpaca-zh
+- tatsu-lab/alpaca
+- hon9kon9ize/yue-alpaca-chat
 ---
 
 # mlx-LycheeAI-coder-1.7b
@@ -39,11 +43,14 @@ datasets:
 
 ## 训练细节
 
-- **训练数据**：
-  - [CodeAlpaca-20k](https://huggingface.co/datasets/sahil2801/CodeAlpaca-20k)（代码指令，取 2000 条）
-  - 精选 GitHub 高质量开源仓库源码（requests、fastapi、zod、express、guava、Alamofire、gin、redis、nlohmann/json、fmt 等，取 1000 片段）
-- **超参数**：学习率 2e-4，batch size 2，1500 步，LoRA rank 16
-- **身份设定**：训练时通过 system prompt 固定模型身份为"由 Qwen3-1.7B 微调而来"
+- **训练数据**（共 5724 条，混合多语言）：
+  - [CodeAlpaca-20k](https://huggingface.co/datasets/sahil2801/CodeAlpaca-20k)（代码指令 3500 条，重点）
+  - 中文对话 800 条（[alpaca-zh](https://huggingface.co/datasets/shibing624/alpaca-zh)）
+  - 英语对话 800 条（[Alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) 英文版）
+  - 粤语对话 600 条（[yue-alpaca-chat](https://huggingface.co/datasets/hon9kon9ize/yue-alpaca-chat)）
+  - 身份问答 24 条（中/英/粤，强化身份记忆）
+- **超参数**：学习率 1e-4，batch size 2，4000 步，LoRA rank 16
+- **身份设定**：通过 system prompt + 身份问答样本，固定模型身份为「LycheeAI-coder-1.7b，由 Qwen3-1.7B 微调而来」
 
 ## 使用方式
 
@@ -65,7 +72,7 @@ mlx_lm.generate --model LycheeAI-coder-1.7b --prompt "写一个二分查找" --m
 
 ## ⚠️ 已知问题
 
-- **通用对话体验不佳**：本模型使用纯代码指令数据微调，通用闲聊（问候、天气、日常问答等）能力有所退化，可能出现答非所问、回复英文或复读训练数据片段的情况。**建议仅用于代码相关任务**（代码生成、补全、解释、改 bug），日常对话请使用通用聊天模型。
+- **对话能力有限**：本模型定位为**代码优先**的编程助手。虽已通过混合数据（中/英/粤语对话）缓解了纯代码微调导致的对话退化，但作为 1.7B 小模型，通用对话的深度与准确性仍不如专门的大规模聊天模型。生成时可能残留空的 `<think>` 标记（Qwen3 思考模式的痕迹），可忽略或由客户端过滤。
 
 ## 预期用途与局限
 
