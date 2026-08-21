@@ -122,6 +122,10 @@ mlx_lm.generate --model LycheeAI-coder-1.7b --prompt "写一个二分查找" --m
 - **开关思考**：正常提问会输出 `<think>` 推理过程再给答案；在提问前加 `/no_think` 可跳过思考直接回答
 - **局限**：1.7B 参数规模有限，复杂推理、长上下文、冷门知识能力有限；深度思考能力受限于模型容量；GGUF 量化版（Ollama / llama.cpp）在长链多步推理上的准确性会略低于 MLX 版（量化损失）。
 
+## 关注作者
+
+📺 **Bilibili**：欢迎关注我的 B 站账号 [https://space.bilibili.com/3493128967293256](https://space.bilibili.com/3493128967293256)，不定期分享 AI 模型训练与折腾记录。
+
 ## 致谢
 
 本模型基于 [Qwen3-1.7B](https://huggingface.co/Qwen/Qwen3-1.7B) 微调，训练框架为 [MLX-LM](https://github.com/ml-explore/mlx-lm)，训练数据来自 CodeAlpaca 及各开源项目。
